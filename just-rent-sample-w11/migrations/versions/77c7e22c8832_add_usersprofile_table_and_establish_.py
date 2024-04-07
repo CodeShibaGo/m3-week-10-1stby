@@ -1,8 +1,8 @@
-"""user/car table
+"""Add UsersProfile table and establish relationship with User
 
-Revision ID: 129f3d7ba3c7
+Revision ID: 77c7e22c8832
 Revises: 
-Create Date: 2024-04-02 11:18:03.925175
+Create Date: 2024-04-05 12:42:36.970265
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '129f3d7ba3c7'
+revision = '77c7e22c8832'
 down_revision = None
 branch_labels = None
 depends_on = None
