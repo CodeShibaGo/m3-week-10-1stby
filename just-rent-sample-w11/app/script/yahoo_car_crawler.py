@@ -25,6 +25,8 @@ def yahoo_car_crawler(url):
         'seat': '座位數',
         'brand': '廠牌',
         'model': '車款',
+        'Fuel_tank': '油箱容量',
+        'suitcase': '標準行李箱容量'
     }
 
 
