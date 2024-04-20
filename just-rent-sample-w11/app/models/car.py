@@ -7,5 +7,5 @@ class Car(db.Model):
     seats = db.Column(db.String(255), nullable=False)
     displacement = db.Column(db.String(255), nullable=False)
     Fuel_tank = db.Column(db.String(255), nullable=False)
-    suitcase = db.Column(db.String(255), nullable=False)
+    suitcase = db.Column(db.String(255))
 

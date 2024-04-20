@@ -64,7 +64,7 @@ for car in car_list:
         if car_info is not None:
             cars_info.append(car_info)
             count += 1
-            if count == 3:
+            if count == 7:
                 break
 print(cars_info)
 
