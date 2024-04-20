@@ -25,6 +25,8 @@ def yahoo_car_crawler(url):
         'seat': '座位數',
         'brand': '廠牌',
         'model': '車款',
+        'Fuel_tank': '油箱容量',
+        'suitcase': '標準行李箱容量'
     }
 
 
@@ -62,7 +64,7 @@ for car in car_list:
         if car_info is not None:
             cars_info.append(car_info)
             count += 1
-            if count == 3:
+            if count == 7:
                 break
 print(cars_info)
 
