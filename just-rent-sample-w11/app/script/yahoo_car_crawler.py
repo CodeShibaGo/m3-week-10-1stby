@@ -22,9 +22,10 @@ def yahoo_car_crawler(url):
     fields_dict = {
         'displacement': '排氣量',
         'body': '車身型式',
+        'door': '車門數',
         'seat': '座位數',
-        'brand': '廠牌',
-        'model': '車款',
+        'width': '車寬',
+        'height': '車高',
         'Fuel_tank': '油箱容量',
         'suitcase': '標準行李箱容量'
     }
