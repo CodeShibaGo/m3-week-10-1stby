@@ -1,0 +1,133 @@
+{% extends 'admin/base.html' %}
+
+
+
+{% block content %}
+
+<section class="section">
+    <div class="card">
+        <div class="card-header m-auto">
+            <h4 class="card-title">汽車清單</h4>
+        </div>
+        <form method="POST">
+            <div class="card-body">
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="basicInput">汽車名稱</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="car_name" value="{{ car.name }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="basicInput">排氣量</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="car_displacement"
+                                value="{{ car.displacement }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="basicInput">車身型式</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="car_body" value="{{ car.body }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="basicInput">車門數</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="car_door" value="{{ car.door }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="basicInput">座位數</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="car_seats" value="{{ car.seats }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="basicInput">車寬</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="car_width" value="{{ car.width }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="basicInput">車高</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="car_height" value="{{ car.height }}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="basicInput">油箱容量</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="car_Fuel_tank" value="{{ car.Fuel_tank }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label for="basicInput">標準行李箱容量</label>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="car_suitcase" value="{{ car.suitcase }}">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 d-flex justify-content-end">
+                <button type="submit" class="btn btn-primary me-1 mb-1">修改</button>
+                <button type="button" class="btn btn-light-secondary me-1 mb-1"><a
+                        href="{{ url_for('controller.admin_home') }}" style="color: black;">回首頁</a></button>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock %}
