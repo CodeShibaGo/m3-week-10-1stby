@@ -43,15 +43,16 @@ def admin_edit_car(car_id):
         db.session.commit()
         return redirect(url_for('controller.admin_home'))
 
-
-
     sql = text('SELECT * FROM cars WHERE id = :car_id')
     result = db.session.execute(sql, {'car_id': car_id})
     car = result.fetchone()
 
     return render_template('admin/edit_car.html', car=car)
 
+@bp.route('/admin/view_car/<int:car_id>')
+def admin_view_car(car_id):
+    sql = text('SELECT * FROM cars WHERE id = :car_id')
+    result = db.session.execute(sql, {'car_id': car_id})
+    car = result.fetchone()
 
-
-
-
+    return render_template('admin/view_car.html', car=car)

@@ -99,8 +99,12 @@
                                                     <td>{{ car.displacement }}</td>
                                                     <td>{{ car.Fuel_tank }}</td>
                                                     <td>{{ car.suitcase }}</td>
-                                                    <td><a href="{{ url_for('controller.admin_edit_car', car_id=car.id) }}">編輯</a></td>
-                                                    <td><a href="＃">觀看</a></td>
+                                                    <td><a
+                                                            href="{{ url_for('controller.admin_edit_car', car_id=car.id) }}">編輯</a>
+                                                    </td>
+                                                    <td><a
+                                                            href="{{ url_for('controller.admin_view_car', car_id=car.id) }}">觀看</a>
+                                                    </td>
                                                 </tr>
                                                 {% endfor %}
                                             </tbody>
