@@ -1,0 +1,43 @@
+<div id="sidebar" class="active sidebar-desktop">
+    <div class="sidebar-wrapper active ps ps--active-y">
+        <div class="sidebar-header position-relative">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="logo">
+                    <a href="index.html"><img src="..." alt="Logo" srcset=""></a>
+                </div>
+                <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
+                    <!-- ... -->
+                </div>
+                <div class="sidebar-toggler x">
+                    <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-menu">
+            <ul class="menu">
+                <li class="sidebar-title">Menu</li>
+                <li class="sidebar-item active">
+                    <a href="{{ url_for('controller.admin_home') }}" class="sidebar-link">
+                        <i class="bi bi-grid-fill"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item active">
+                    <a href="{{ url_for('controller.admin_users') }}" class="sidebar-link">
+                        <i class="bi bi-grid-fill"></i>
+                        <span>userlist</span>
+                    </a>
+                </li>
+
+                <li class="sidebar-item active">
+                    <a href="{{ url_for('controller.admin_logout') }}" class="sidebar-link">
+                        <i class="bi bi-grid-fill"></i>
+                        <span>logout</span>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
