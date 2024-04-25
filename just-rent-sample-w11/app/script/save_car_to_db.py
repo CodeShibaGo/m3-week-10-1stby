@@ -19,7 +19,14 @@ print(data)
 for item in data:
     car = Car(
         name=item['name'],
-        seats=item['seat']
+        body=item['body'],
+        door=item['door'],
+        seats=item['seat'],
+        width=item['width'],
+        height=item['height'],
+        displacement=item['displacement'],
+        Fuel_tank=item['Fuel_tank'],
+        suitcase=item['suitcase']
     )
     session.add(car)
 session.commit()
