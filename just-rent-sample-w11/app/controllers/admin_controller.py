@@ -14,6 +14,13 @@ def admin_home():
     cars = db.session.execute(query)
     return render_template('admin/index.html', cars=cars)
 
+@bp.route('/admin/cars/popular')
+@login_required
+def admin_cars_popular():
+    query = text("SELECT * FROM cars ORDER BY booking_count DESC LIMIT 5")
+    cars = db.session.execute(query)
+    return render_template('admin/cars_popular.html', cars=cars)
+
 @bp.route('/admin/login', methods=['GET', 'POST'])
 def admin_login():
     if request.method == 'POST':
