@@ -14,3 +14,5 @@ class Car(db.Model):
     suitcase = db.Column(db.String(255))
     booking_count = db.Column(db.Integer)
 
+    wishlists = db.relationship('wishlist', backref='car', lazy=True)
+
