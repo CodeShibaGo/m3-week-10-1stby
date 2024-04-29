@@ -119,7 +119,13 @@
                             </div>
                             <div class="de-flex-col">
                                 <div class="menu_side_area">
-                                    <a href="{{ url_for('controller.login') }}" class="btn-main">Sign In</a>
+                                    {% if current_user.is_anonymous %}
+                                    <a href="{{ url_for('controller.login') }}" class="btn-main"
+                                        style="color: black;">Sign In</a>
+                                    {% else %}
+                                    <a href="{{ url_for('controller.logout') }}" class="btn-main"
+                                        style="color: black;">Logout</a>
+                                    {% endif %}
                                     <span id="menu-btn"></span>
                                 </div>
                             </div>
