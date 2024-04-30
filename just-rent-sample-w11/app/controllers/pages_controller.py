@@ -1,7 +1,7 @@
 from flask_login import current_user, login_required, login_user, logout_user
 from sqlalchemy import text
 from app.controllers import bp
-from flask import flash, redirect, render_template, request, url_for
+from flask import flash, redirect, render_template, request, session, url_for
 from app import db
 from app.models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -24,6 +24,7 @@ def cars_list():
 
 @bp.route('/car-single')
 def car_single():
+
     return render_template('car-single.html')
 
 @bp.route('/booking')
@@ -57,6 +58,7 @@ def login():
         if user and check_password_hash(user.password, password): 
             user = User(id=user.id, username=user.username, password=user.password)
             login_user(user) 
+            session['user_id'] = user.id
             return redirect(url_for('controller.home'))
         else:
             flash('使用者帳號/密碼錯誤','error')

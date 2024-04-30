@@ -1,4 +1,6 @@
 from app import db
+from app.models.wishlist import Wishlist
+
 
 class Car(db.Model):
     __tablename__ = 'cars'
@@ -14,5 +16,5 @@ class Car(db.Model):
     suitcase = db.Column(db.String(255))
     booking_count = db.Column(db.Integer)
 
-    wishlists = db.relationship('wishlist', backref='car', lazy=True)
+    wishlists = db.relationship('Wishlist', backref='car', lazy=True)
 

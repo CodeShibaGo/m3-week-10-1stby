@@ -1,5 +1,7 @@
 from flask_login import UserMixin
 from app import db
+from app.models.wishlist import Wishlist
+
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
