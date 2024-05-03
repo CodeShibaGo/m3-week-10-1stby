@@ -15,6 +15,7 @@
                 <div class="row">
                     <div class="col-md-12 text-center">
                         <h1>Vehicle Fleet</h1>
+                        <input type="hidden" id="carId" value="{{ car.id }}">
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -305,7 +306,7 @@
 <script src="{{ url_for('static', filename='js/api/cars.js') }}"></script>
 <script>
     document.querySelector('#addToWishList').addEventListener('click', function () {
-        var carId = 22;
+        let carId = document.querySelector('#carId').value;
         addToWishList(carId);
     });
     function addToWishList(carId) {
@@ -338,7 +339,7 @@
 </script>
 <script>
     document.querySelector('#removeFromWishList').addEventListener('click', function () {
-        var carId = 22;
+        let carId = document.querySelector('#carId').value;
         removeFromWishList(carId);
     });
 

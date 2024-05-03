@@ -22,10 +22,12 @@ def cars():
 def cars_list():
     return render_template('cars-list.html')
 
-@bp.route('/car-single')
-def car_single():
+@bp.route('/car-single/<int:car_id>')
+def car_single(car_id):
+    query = text('SELECT * FROM cars WHERE id = :car_id')
+    result = db.session.execute(query,{'car_id':car_id}).fetchone()
 
-    return render_template('car-single.html')
+    return render_template('car-single.html', car = result)
 
 @bp.route('/booking')
 def booking():
