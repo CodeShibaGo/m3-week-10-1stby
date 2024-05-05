@@ -85,8 +85,7 @@
                                                     1</a></li>
                                             <li><a class="menu-item" href="{{ url_for('controller.cars_list') }}">Cars
                                                     List 2</a></li>
-                                            <li><a class="menu-item" href="{{ url_for('controller.car_single') }}">Cars
-                                                    Single</a></li>
+
                                         </ul>
                                     </li>
                                     <li><a class="menu-item" href="{{ url_for('controller.booking') }}">Booking</a></li>
@@ -100,8 +99,7 @@
                                                     href="{{ url_for('controller.account_booking') }}">My Orders</a>
                                             </li>
                                             <li><a class="menu-item"
-                                                    href="{{ url_for('controller.account_favorite') }}">My Favorite
-                                                    Cars</a>
+                                                    href="{{ url_for('controller.wishlist') }}">wishlist</a>
                                             </li>
                                         </ul>
                                     </li>
@@ -119,7 +117,13 @@
                             </div>
                             <div class="de-flex-col">
                                 <div class="menu_side_area">
-                                    <a href="{{ url_for('controller.login') }}" class="btn-main">Sign In</a>
+                                    {% if current_user.is_anonymous %}
+                                    <a href="{{ url_for('controller.login') }}" class="btn-main"
+                                        style="color: black;">Sign In</a>
+                                    {% else %}
+                                    <a href="{{ url_for('controller.logout') }}" class="btn-main"
+                                        style="color: black;">Logout</a>
+                                    {% endif %}
                                     <span id="menu-btn"></span>
                                 </div>
                             </div>
