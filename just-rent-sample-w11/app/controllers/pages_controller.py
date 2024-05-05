@@ -41,10 +41,18 @@ def account_profile():
 def account_booking():
     return render_template('account-booking.html')
 
-@bp.route('/my-favorite-car')
+@bp.route('/wishlist')
 @login_required
-def account_favorite():
-    return render_template('account-favorite.html')
+def wishlist():
+    user_id = session.get('user_id')
+    query = text('''
+                 SELECT * FROM wishlist 
+                 JOIN cars ON wishlist.car_id = cars.id
+                 WHERE user_id = :user_id
+                 ''')
+    cars = db.session.execute(query,{'user_id':user_id}).fetchall()
+
+    return render_template('wishlist.html',cars = cars)
 
 @bp.route('/login', methods=['GET', 'POST'])
 def login():
