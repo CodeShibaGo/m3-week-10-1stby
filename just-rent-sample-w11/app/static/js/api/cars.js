@@ -11,17 +11,17 @@ function fetchData(carId) {
             }
             return response.json();
         })
-        .then(function (data) {
-            update(data)
+        .then(function (car) {
+            update(car)
         })
         .catch(function (error) {
             console.error('There was a problem with the fetch operation:', error);
 
         })
 }
-function update(data) {
-    document.querySelector('.d-value[data-spec="body"]').textContent = data.body;
-    document.querySelector('.d-value[data-spec="seats"]').textContent = data.seats;
-    document.querySelector('.d-value[data-spec="door"]').textContent = data.door
+function update(car) {
+    document.querySelector('.d-value[data-spec="body"]').textContent = car.body;
+    document.querySelector('.d-value[data-spec="seats"]').textContent = car.seats;
+    document.querySelector('.d-value[data-spec="door"]').textContent = car.door
 
 }
