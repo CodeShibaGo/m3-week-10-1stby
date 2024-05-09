@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
-
 {% set no_footer = true %}
-
 {% block content %}
 <!-- content begin -->
 <div class="no-bottom no-top" id="content">
@@ -15,12 +13,20 @@
             <div class="padding40 rounded-3 shadow-soft" data-bgcolor="#ffffff">
               <h4>Login</h4>
               <div class="spacer-10"></div>
-              <form id="form_register" class="form-border" method="post" action="account-dashboard.html">
+              {% with messages = get_flashed_messages(with_categories=true) %}
+              {% if messages %}
+              <div class="messages">
+                <div class="alert alert-{{ category }}">{{ messages }}</div>
+              </div>
+              {% endif %}
+              {% endwith %}
+              <form id="form_register" class="form-border" method="post" action="">
                 <div class="field-set">
                   <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" />
                 </div>
                 <div class="field-set">
-                  <input type="text" name="password" id="password" class="form-control" placeholder="Your Password" />
+                  <input type="password" name="password" id="password" class="form-control"
+                    placeholder="Your Password" />
                 </div>
                 <div id="submit">
                   <input type="submit" id="send_message" value="Sign In" class="btn-main btn-fullwidth rounded-3" />

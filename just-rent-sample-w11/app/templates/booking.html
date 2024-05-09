@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 
 
+{% block head_content %}
+<link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.02.min.css">
+
+
+{% endblock %}
+
 
 {% block content %}
 <!-- content begin -->
@@ -33,6 +40,7 @@
 
 
                         <form name="contactForm" id='contact_form' method="post">
+                            <input type="text" name="carid" placeholder="要租哪一台" required>
                             <div id="step-1" class="row">
                                 <div class="col-lg-6 mb30">
                                     <h5>What is your vehicle type?</h5>
@@ -73,9 +81,11 @@
                                     <div class="row">
                                         <div class="col-lg-6 mb20">
                                             <h5>Pick Up Location</h5>
-                                            <input type="text" name="PickupLocation" onfocus="geolocate()"
-                                                placeholder="Enter your pickup location" id="autocomplete"
-                                                autocomplete="off" class="form-control">
+                                            <input id="autoComplete" name="pick_up_location" type="search" dir="ltr"
+                                                spellcheck=false autocorrect="off" autocomplete="off "
+                                                autocapitalize="off" maxlength="2048" tabindex="1" style="width: 100%;"
+                                                required>
+
 
                                             <div class="jls-address-preview jls-address-preview--hidden">
                                                 <div class="jls-address-preview__header">
@@ -85,9 +95,11 @@
 
                                         <div class="col-lg-6 mb20">
                                             <h5>Drop Off Location</h5>
-                                            <input type="text" name="DropoffLocation" onfocus="geolocate()"
-                                                placeholder="Enter your dropoff location" id="autocomplete2"
-                                                autocomplete="off" class="form-control">
+                                            <input id="autoComplete2" name="drop_off_location" type="search" dir="ltr"
+                                                spellcheck=false autocorrect="off" autocomplete="off"
+                                                autocapitalize="off" maxlength="2048" tabindex="1" style="width: 100%;"
+                                                required>
+
 
                                             <div class="jls-address-preview jls-address-preview--hidden">
                                                 <div class="jls-address-preview__header">
@@ -98,8 +110,8 @@
                                         <div class="col-lg-6 mb20">
                                             <h5>Pick Up Date & Time</h5>
                                             <div class="date-time-field">
-                                                <input type="text" id="date-picker" name="Pick Up Date" value="">
-                                                <select name="Pick Up Time" id="pickup-time">
+                                                <input type="date" id="date" name="Pick Up Date" value="" required>
+                                                <select name="Pick Up Time" id="pickup-time" required>
                                                     <option selected disabled value="Select time">Time</option>
                                                     <option value="00:00">00:00</option>
                                                     <option value="00:30">00:30</option>
@@ -156,8 +168,8 @@
                                         <div class="col-lg-6 mb20">
                                             <h5>Return Date & Time</h5>
                                             <div class="date-time-field">
-                                                <input type="text" id="date-picker-2" name="Collection Date" value="">
-                                                <select name="Collection Time" id="collection-time">
+                                                <input type="date" id="date-2" name="Collection Date" value="" required>
+                                                <select name="Collection Time" id="collection-time" required>
                                                     <option selected disabled value="Select time">Time</option>
                                                     <option value="00:00">00:00</option>
                                                     <option value="00:30">00:30</option>
@@ -340,4 +352,87 @@
 
 </div>
 <!-- content close -->
+<script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+<script>
+    const autoCompleteJS = new autoComplete({
+        selector: "#autoComplete",
+        placeHolder: "Pick Up Location",
+        data: {
+            src: [
+                'Taipei City',
+                'New Taipei City',
+                'Taoyuan City',
+                'Taichung City',
+                'Tainan City',
+                'Kaohsiung City',
+                'Keelung City',
+                'Hsinchu City',
+                'Chiayi City',
+                'Hsinchu County',
+                'Miaoli County',
+                'Changhua County',
+                'Nantou County',
+                'Yunlin County',
+                'Chiayi County',
+                'Pingtung County',
+                'Yilan County',
+                'Hualien County',
+                'Taitung County',
+                'Penghu County',
+                'Kinmen County',
+                'Lienchiang County'
+            ]
+        }
+    });
+    document.querySelector("#autoComplete").addEventListener("selection", function (event) {
+        // "event.detail" carries the autoComplete.js "feedback" object
+
+        const selectedValue = event.detail.selection.value;
+
+        // 將選擇的項目值賦值給輸入框
+        this.value = selectedValue;
+    });
+
+</script>
+<script>
+    const autoCompleteJS2 = new autoComplete({
+        selector: "#autoComplete2",
+        placeHolder: "Drop Off Location",
+        data: {
+            src: [
+                'Taipei City',
+                'New Taipei City',
+                'Taoyuan City',
+                'Taichung City',
+                'Tainan City',
+                'Kaohsiung City',
+                'Keelung City',
+                'Hsinchu City',
+                'Chiayi City',
+                'Hsinchu County',
+                'Miaoli County',
+                'Changhua County',
+                'Nantou County',
+                'Yunlin County',
+                'Chiayi County',
+                'Pingtung County',
+                'Yilan County',
+                'Hualien County',
+                'Taitung County',
+                'Penghu County',
+                'Kinmen County',
+                'Lienchiang County'
+            ]
+        }
+    });
+    document.querySelector("#autoComplete2").addEventListener("selection", function (event) {
+        // "event.detail" carries the autoComplete.js "feedback" object
+
+        const selectedValue = event.detail.selection.value;
+
+        // 將選擇的項目值賦值給輸入框
+        this.value = selectedValue;
+    });
+</script>
+
 {% endblock %}

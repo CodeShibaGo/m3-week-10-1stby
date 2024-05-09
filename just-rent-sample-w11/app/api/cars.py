@@ -1,6 +1,28 @@
 from flask import jsonify
 from app.api import bp
+from app import db
+from sqlalchemy import text
 
 @bp.route('/api/cars', methods=['GET'])
 def get_cars(): 
-  return jsonify([{'車款': '2024 Toyota Crown 皇家版', '售價': ' 207 ', '排氣量': '2393cc', '車身型式': '轎車,跨界休旅車', '座位數': '5人座', '車門數': '4門', '車長': '4980mm', '軸距': '2850mm', '平均油耗': '15.6km/ltr'}])
+    query = text('SELECT * FROM cars')
+    cars = db.session.execute(query)
+
+    cars_list = [dict(row._mapping) for row in cars]
+    return jsonify(cars_list)
+
+@bp.route('/api/cars/<int:id>', methods = ['GET'])
+def get_car(id):
+    query = text('SELECT * FROM cars WHERE id = :id')
+    car = db.session.execute(query, {'id': id}).fetchone()._asdict()
+    return jsonify(car)
+
+
+@bp.route('/api/cars/popular', methods=['GET'])
+def get_popular_car():
+    query = text('SELECT * FROM cars ORDER BY booking_count DESC LIMIT 5')
+    popular_cars = db.session.execute(query)
+
+    popular_car_list = [dict(row._mapping) for row in popular_cars]
+    return jsonify(popular_car_list)
+

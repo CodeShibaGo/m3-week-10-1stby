@@ -8,3 +8,4 @@ from app.models.car import Car
 from app.models.usersprofile import UsersProfile
 from app.models.location import Location
 from app.models.booking import Booking
+from app.models.wishlist import Wishlist

@@ -51,18 +51,20 @@
                     <div class="spacer-10"></div>
 
                     <h4>Specifications</h4>
+                    <button id="addToWishList">加到追蹤清單</button>
+                    <button id="removeFromWishList">從追蹤清單移除</button>
                     <div class="de-spec">
                         <div class="d-row">
                             <span class="d-title">Body</span>
-                            <spam class="d-value">Sedan</spam>
+                            <spam class="d-value" data-spec="body"></spam>
                         </div>
                         <div class="d-row">
                             <span class="d-title">Seat</span>
-                            <spam class="d-value">2 seats</spam>
+                            <spam class="d-value" data-spec="seats"></spam>
                         </div>
                         <div class="d-row">
                             <span class="d-title">Door</span>
-                            <spam class="d-value">2 doors</spam>
+                            <spam class="d-value" data-spec="door"></spam>
                         </div>
                         <div class="d-row">
                             <span class="d-title">Luggage</span>
@@ -298,5 +300,75 @@
 
 
 </div>
+
+
+<script src="{{ url_for('static', filename='js/api/cars.js') }}"></script>
+<script>
+    document.querySelector('#addToWishList').addEventListener('click', function () {
+        var carId = 22;
+        addToWishList(carId);
+    });
+    function addToWishList(carId) {
+        fetch('http://127.0.0.1:5000/api/my_wishlist', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ car_id: carId })
+        })
+            .then(response => {
+                if (response.status === 401) {
+                    alert('請先登錄才能加入追蹤清單。');
+                } else {
+                    return response.json();
+                }
+            })
+            .then(data => {
+                if (data.message === 'success') {
+                    alert('成功加到追蹤清單！');
+                } else {
+                    alert('加到追蹤清單失敗,請稍後再試。');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('失敗！！！');
+            });
+    }
+</script>
+<script>
+    document.querySelector('#removeFromWishList').addEventListener('click', function () {
+        var carId = 22;
+        removeFromWishList(carId);
+    });
+
+    function removeFromWishList(carId) {
+        fetch('http://127.0.0.1:5000/api/my_wishlist', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ car_id: carId })
+        })
+            .then(response => {
+                if (response.status === 401) {
+                    alert('請先登錄才能從追蹤清單移除。');
+                } else {
+                    return response.json();
+                }
+            })
+            .then(data => {
+                if (data.message === 'success') {
+                    alert('成功從追蹤清單移除！');
+                } else {
+                    alert('從追蹤清單移除失敗，請稍後再試。');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('失敗！！！');
+            });
+    }
+</script>
 <!-- content close -->
 {% endblock %}

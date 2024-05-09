@@ -3,6 +3,7 @@
 
 <head>
     <title>JustRent</title>
+    {% block head_content %}{% endblock %}
     <link rel="icon" href="{{ url_for('static' ,filename='images/icon.png') }}" type="image/gif" sizes="16x16">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -85,8 +86,8 @@
                                                     1</a></li>
                                             <li><a class="menu-item" href="{{ url_for('controller.cars_list') }}">Cars
                                                     List 2</a></li>
-                                            <li><a class="menu-item" href="{{ url_for('controller.car_single') }}">Cars
-                                                    Single</a></li>
+                                            <!-- <li><a class="menu-item" href="{{ url_for('controller.car_single') }}">Cars
+                                                    Single</a></li> -->
                                         </ul>
                                     </li>
                                     <li><a class="menu-item" href="{{ url_for('controller.booking') }}">Booking</a></li>
@@ -119,7 +120,13 @@
                             </div>
                             <div class="de-flex-col">
                                 <div class="menu_side_area">
-                                    <a href="{{ url_for('controller.login') }}" class="btn-main">Sign In</a>
+                                    {% if current_user.is_anonymous %}
+                                    <a href="{{ url_for('controller.login') }}" class="btn-main"
+                                        style="color: black;">Sign In</a>
+                                    {% else %}
+                                    <a href="{{ url_for('controller.logout') }}" class="btn-main"
+                                        style="color: black;">Logout</a>
+                                    {% endif %}
                                     <span id="menu-btn"></span>
                                 </div>
                             </div>
