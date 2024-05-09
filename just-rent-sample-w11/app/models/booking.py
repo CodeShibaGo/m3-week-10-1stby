@@ -14,8 +14,8 @@ class Booking (db.Model):
     car_id = db.Column(db.Integer, db.ForeignKey('cars.id'), nullable=False)
     pick_up_location_id = db.Column(db.Integer, db.ForeignKey('locations.id'), nullable=False)
     drop_off_location_id = db.Column(db.Integer, db.ForeignKey('locations.id'), nullable=False)
-    pick_up_time = db.Column(db.DateTime, nullable=False)
-    return_time = db.Column(db.DateTime, nullable=False)
+    pick_up_datetime = db.Column(db.DateTime, nullable=False)
+    return_datetime = db.Column(db.DateTime, nullable=False)
     Status = db.Column(db.Integer, nullable=False)
 
 
