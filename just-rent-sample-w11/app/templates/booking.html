@@ -40,7 +40,7 @@
 
 
                         <form name="contactForm" id='contact_form' method="post">
-                            <input type="text" name="carid" placeholder="要租哪一台" required>
+                            <input type="text" name="carId" placeholder="要租哪一台" required>
                             <div id="step-1" class="row">
                                 <div class="col-lg-6 mb30">
                                     <h5>What is your vehicle type?</h5>
@@ -81,7 +81,7 @@
                                     <div class="row">
                                         <div class="col-lg-6 mb20">
                                             <h5>Pick Up Location</h5>
-                                            <input id="autoComplete" name="pick_up_location" type="search" dir="ltr"
+                                            <input id="autoComplete" name="pickUpLocation" type="search" dir="ltr"
                                                 spellcheck=false autocorrect="off" autocomplete="off "
                                                 autocapitalize="off" maxlength="2048" tabindex="1" style="width: 100%;"
                                                 required>
@@ -95,7 +95,7 @@
 
                                         <div class="col-lg-6 mb20">
                                             <h5>Drop Off Location</h5>
-                                            <input id="autoComplete2" name="drop_off_location" type="search" dir="ltr"
+                                            <input id="autoComplete2" name="dropOffLocation" type="search" dir="ltr"
                                                 spellcheck=false autocorrect="off" autocomplete="off"
                                                 autocapitalize="off" maxlength="2048" tabindex="1" style="width: 100%;"
                                                 required>
@@ -110,8 +110,8 @@
                                         <div class="col-lg-6 mb20">
                                             <h5>Pick Up Date & Time</h5>
                                             <div class="date-time-field">
-                                                <input type="date" id="date" name="Pick Up Date" value="" required>
-                                                <select name="Pick Up Time" id="pickup-time" required>
+                                                <input type="date" id="date" name="PickUpDate" value="" required>
+                                                <select name="PickUpTime" id="pickup-time" required>
                                                     <option selected disabled value="Select time">Time</option>
                                                     <option value="00:00">00:00</option>
                                                     <option value="00:30">00:30</option>
@@ -168,8 +168,8 @@
                                         <div class="col-lg-6 mb20">
                                             <h5>Return Date & Time</h5>
                                             <div class="date-time-field">
-                                                <input type="date" id="date-2" name="Collection Date" value="" required>
-                                                <select name="Collection Time" id="collection-time" required>
+                                                <input type="date" id="date-2" name="returnDate" value="" required>
+                                                <select name="returnTime" id="collection-time" required>
                                                     <option selected disabled value="Select time">Time</option>
                                                     <option value="00:00">00:00</option>
                                                     <option value="00:30">00:30</option>
@@ -353,6 +353,7 @@
 </div>
 <!-- content close -->
 <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+<script src="{{ url_for('static', filename='js/api/booking.js') }}"></script>
 <script>
     const autoCompleteJS = new autoComplete({
         selector: "#autoComplete",
